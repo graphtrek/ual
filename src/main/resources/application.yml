@@ -1,10 +1,28 @@
+server:
+  compression:
+    enabled: true
+  # Default port
+  port: 8082
+  # Enable graceful shutdown - Server will wait for active request to finish
+  shutdown: graceful
+
+
 spring:
   jpa:
     open-in-view: false
   devtools:
     add-properties: true
-  elasticsearch:
-    uris: http://localhost:9200
+  threads:
+    virtual:
+      enabled: true
+
+application:
+  elasticUrl: localhost:9200
+
+# Swagger
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
 
 logging:
   level:

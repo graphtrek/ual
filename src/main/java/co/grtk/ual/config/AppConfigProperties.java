@@ -14,6 +14,6 @@ import static lombok.AccessLevel.PRIVATE;
 @FieldDefaults(level = PRIVATE)
 
 @ConfigurationProperties(prefix = "application")
-public class ApplicationConfigProperties {
-
+public class AppConfigProperties {
+    private String elasticUrl;
 }
