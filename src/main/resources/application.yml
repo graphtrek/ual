@@ -31,3 +31,9 @@ logging:
         data:
           elasticsearch:
             core: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        exclude: '*'
