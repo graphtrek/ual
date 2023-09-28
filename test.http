@@ -3,11 +3,11 @@ GET http://localhost:8082/api/ping
 Accept: application/json
 
 ### GET request list
-GET http://localhost:8082/api/log/list
+GET http://localhost:8082/api/list
 Accept: application/json
 
 ### Send POST request add
-POST http://localhost:8082/api/log/add
+POST http://localhost:8082/api/log
 Content-Type: application/json
 
 {

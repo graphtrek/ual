@@ -22,6 +22,7 @@ public class UserActivityLogMapper {
         userActivityLog.setCorrelationId(entry.getCorrelationId());
         userActivityLog.setTextParams(entry.getTextParams());
         userActivityLog.setLogLevel(entry.getLogLevel());
+        userActivityLog.setCategory(entry.getCategory());
         return userActivityLog;
     }
 
@@ -31,7 +32,7 @@ public class UserActivityLogMapper {
                 .eventId(entity.getEventId())
                 .token(entity.getToken())
                 .clientId(entity.getClientId())
-                .clientId(entity.getClientId())
+                .category(entity.getCategory())
                 .appId(entity.getAppId())
                 .activityCode(entity.getActivityCode())
                 .resultCode(entity.getResultCode())
