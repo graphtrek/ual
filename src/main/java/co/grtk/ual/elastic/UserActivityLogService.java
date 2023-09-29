@@ -14,7 +14,7 @@ import static co.grtk.ual.elastic.UserActivityLogMapper.toUserActivityLogDocumen
 public class UserActivityLogService {
     private final UserActivityLogRepository userActivityLogRepository;
 
-    public void saveActivityLog(UserActivityLogDTO dto) {
+    public void logUserActivity(UserActivityLogDTO dto) {
         UserActivityLogDocument document = toUserActivityLogDocument(dto);
         userActivityLogRepository.save(document);
     }

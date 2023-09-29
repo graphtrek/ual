@@ -21,6 +21,8 @@ These additional references should also help you:
 ### KAFKA
 * [Kafka without zookeeper](https://linuxhint.com/run-apache-kafka-without-zookeeper)
 * [KafkaCat](https://docs.confluent.io/platform/current/tools/kafkacat-usage.html)
+* [Apache Kafka® Producer Example using SpringBoot 3.x | Java Techie](https://github.com/Java-Techie-jt/kafka-producer-example/tree/main)
+* [Apache Kafka® Consumer Example using SpringBoot 3 | Consumer Groups | Java Techie](https://github.com/Java-Techie-jt/kafka-consumer-example)
 * [How to Integrate Apache Kafka in Your Spring Boot Application](https://www.pixeltrice.com/how-to-integrate-apache-kafka-in-your-spring-boot-application/)
 * [GIT How to Integrate Apache Kafka in Your Spring Boot Application](https://github.com/sk444/spring-boot-Kafka-app)
 

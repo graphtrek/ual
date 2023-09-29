@@ -24,12 +24,12 @@ public class UALRestController {
         return new ResponseEntity<>("OK",HttpStatus.OK);
     }
 
-    @PostMapping("/api/log")
+    @PostMapping("/api/logUserActivity")
     public void log(@RequestBody UserActivityLogDTO dto) {
-        userActivityLogService.saveActivityLog(dto);
+        userActivityLogService.logUserActivity(dto);
     }
 
-    @GetMapping("/api/list")
+    @GetMapping("/api/listUserActivity")
     public List<UserActivityLogDTO> list() {
         return userActivityLogService.list();
     }
