@@ -10,11 +10,11 @@ import org.springframework.data.elasticsearch.repository.config.EnableElasticsea
 @RequiredArgsConstructor
 @EnableElasticsearchRepositories(basePackages = "co.grtk.ual.elastic")
 public class ElasticConfig extends ElasticsearchConfiguration {
-    private final AppConfigProperties appConfigProperties;
+    private final AppConfig appConfig;
     @Override
     public ClientConfiguration clientConfiguration() {
         return ClientConfiguration.builder()
-                .connectedTo(appConfigProperties.getElasticUrl())
+                .connectedTo(appConfig.getElasticUrl())
                 .build();
     }
 }

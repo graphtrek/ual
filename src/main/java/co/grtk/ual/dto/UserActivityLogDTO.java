@@ -1,11 +1,10 @@
 package co.grtk.ual.dto;
 
-import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDateTime;
 
-@Builder
+
 @Data
 public class UserActivityLogDTO {
     private String id;

@@ -27,20 +27,21 @@ public class UserActivityLogMapper {
     }
 
     public static UserActivityLogDTO toUserActivityLogDTO(UserActivityLogDocument entity) {
-        return UserActivityLogDTO.builder()
-                .id(entity.getId())
-                .eventId(entity.getEventId())
-                .token(entity.getToken())
-                .clientId(entity.getClientId())
-                .category(entity.getCategory())
-                .appId(entity.getAppId())
-                .activityCode(entity.getActivityCode())
-                .resultCode(entity.getResultCode())
-                .timeStamp(DateUtil.toLocalDateTime(entity.getTimeStamp()))
-                .correlationId(entity.getCorrelationId())
-                .textParams(entity.getTextParams())
-                .logLevel(entity.getLogLevel())
-                .build();
+        UserActivityLogDTO userActivityLogDTO = new UserActivityLogDTO();
+        userActivityLogDTO.setId(entity.getId());
+        userActivityLogDTO.setActivityCode(entity.getActivityCode());
+        userActivityLogDTO.setCategory(entity.getCategory());
+        userActivityLogDTO.setLogLevel(entity.getLogLevel());
+        userActivityLogDTO.setEventId(entity.getEventId());
+        userActivityLogDTO.setToken(userActivityLogDTO.getToken());
+        userActivityLogDTO.setAppId(entity.getAppId());
+        userActivityLogDTO.setTextParams(entity.getTextParams());
+        userActivityLogDTO.setLogLevel(entity.getLogLevel());
+        userActivityLogDTO.setTimeStamp(DateUtil.toLocalDateTime(entity.getTimeStamp()));
+        userActivityLogDTO.setClientId(entity.getClientId());
+        userActivityLogDTO.setCorrelationId(entity.getCorrelationId());
+        userActivityLogDTO.setResultCode(entity.getResultCode());
+        return userActivityLogDTO;
     }
 
 }
