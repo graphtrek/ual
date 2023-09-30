@@ -23,6 +23,7 @@ public class UserActivityLogMapper {
         userActivityLog.setTextParams(entry.getTextParams());
         userActivityLog.setLogLevel(entry.getLogLevel());
         userActivityLog.setCategory(entry.getCategory());
+        userActivityLog.setToken(entry.getToken());
         return userActivityLog;
     }
 
