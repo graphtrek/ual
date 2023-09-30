@@ -12,14 +12,25 @@ spring:
     open-in-view: false
   devtools:
     add-properties: true
-  threads:
-    virtual:
-      enabled: true
+  ldap:
+    embedded:
+      base-dn: dc=springframework,dc=org
+      ldif: classpath:test-server.ldif
+      port: 8389
 
 application:
+  authentication:
+    devTechUser:
+      passwordHash: '"{bcrypt}$2a$12$dqvc0Qk/D6Ru9n4UK7kaRe7tTbBZKNowXJLM32TJxPZkVAZgQflWK"'
+      username: _esl_internal_ws
+    ldap:
+      baseDN: dc=springframework,dc=org
+      enabled: true
+      url: ldap://localhost:8389
+      userDnPattern: uid={0},ou=people
+      userCacheExpiryMs: 60000
 
   elasticUrl: localhost:9200
-
   kafkaBootstrapServer: localhost:9092
 
 # Swagger
