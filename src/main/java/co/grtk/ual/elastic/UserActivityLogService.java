@@ -4,9 +4,10 @@ import co.grtk.ual.dto.UserActivityLogDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.StreamSupport;
 
+import static co.grtk.ual.elastic.UserActivityLogMapper.toUserActivityLogDTO;
 import static co.grtk.ual.elastic.UserActivityLogMapper.toUserActivityLogDocument;
 
 @AllArgsConstructor
@@ -20,9 +21,11 @@ public class UserActivityLogService {
     }
 
     public List<UserActivityLogDTO> list() {
-        return StreamSupport.stream(
-                        userActivityLogRepository.findAll().spliterator(), false)
-                .map(UserActivityLogMapper::toUserActivityLogDTO)
-                .toList();
+        List<UserActivityLogDTO> list = new ArrayList<>();
+        userActivityLogRepository.findAll().forEach(document -> {
+            UserActivityLogDTO userActivityLogDTO = toUserActivityLogDTO(document);
+            list.add(userActivityLogDTO);
+        });
+        return list;
     }
 }
