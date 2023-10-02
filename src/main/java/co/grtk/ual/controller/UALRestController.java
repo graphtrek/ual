@@ -1,15 +1,13 @@
 package co.grtk.ual.controller;
 
 import co.grtk.ual.dto.UserActivityLogDTO;
+import co.grtk.ual.dto.UserActivityLogRequestDTO;
 import co.grtk.ual.elastic.UserActivityLogService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,7 +28,7 @@ public class UALRestController {
     }
 
     @GetMapping("/api/listUserActivity")
-    public List<UserActivityLogDTO> list() {
-        return userActivityLogService.list();
+    public List<UserActivityLogDTO> list(@ModelAttribute UserActivityLogRequestDTO userActivityLogRequestDTO) {
+        return userActivityLogService.list(userActivityLogRequestDTO);
     }
 }

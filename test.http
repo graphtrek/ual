@@ -1,14 +1,19 @@
 ### GET request ping
 GET http://localhost:8082/api/ping
 Accept: application/json
+Authorization: Basic X2VzbF9pbnRlcm5hbF93czpfZXNsX2ludGVybmFsX3dz
 
 ### GET request list
-GET http://localhost:8082/api/listUserActivity
+GET http://localhost:8082/api/listUserActivity?fromTs=2023-01-01T08:12:01.292&toTs=2023-12-31T08:12:01.292
 Accept: application/json
+Content-Type: application/json
+Authorization: Basic X2VzbF9pbnRlcm5hbF93czpfZXNsX2ludGVybmFsX3dz
+
 
 ### Send POST request add
 POST http://localhost:8082/api/logUserActivity
 Content-Type: application/json
+Authorization: Basic X2VzbF9pbnRlcm5hbF93czpfZXNsX2ludGVybmFsX3dz
 
 {
   "eventId": "666666",
