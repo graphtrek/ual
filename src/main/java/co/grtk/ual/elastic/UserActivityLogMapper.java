@@ -3,6 +3,8 @@ package co.grtk.ual.elastic;
 import co.grtk.ual.dto.UserActivityLogDTO;
 import co.grtk.ual.util.DateUtil;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 
@@ -18,6 +20,8 @@ public class UserActivityLogMapper {
         userActivityLog.setAppId(entry.getAppId());
         userActivityLog.setActivityCode(entry.getActivityCode());
         userActivityLog.setResultCode(entry.getResultCode());
+        Duration duration = Duration.between(entry.getTimeStamp(), LocalDateTime.now());
+        userActivityLog.setElapsed((int)duration.toMillis());
         userActivityLog.setTimeStamp(DateUtil.toDate(entry.getTimeStamp()));
         userActivityLog.setCorrelationId(entry.getCorrelationId());
         userActivityLog.setTextParams(entry.getTextParams());
@@ -42,6 +46,7 @@ public class UserActivityLogMapper {
         userActivityLogDTO.setClientId(entity.getClientId());
         userActivityLogDTO.setCorrelationId(entity.getCorrelationId());
         userActivityLogDTO.setResultCode(entity.getResultCode());
+        userActivityLogDTO.setElapsed(entity.getElapsed());
         return userActivityLogDTO;
     }
 

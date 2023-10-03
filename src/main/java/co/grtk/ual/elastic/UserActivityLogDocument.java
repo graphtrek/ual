@@ -47,4 +47,7 @@ public class UserActivityLogDocument {
 
     @Field(type = FieldType.Keyword, name = "logLevel")
     private String logLevel;
+
+    @Field(type = FieldType.Integer, name = "elapsed")
+    private int elapsed;
 }
