@@ -34,6 +34,8 @@ Authorization: Basic X2VzbF9pbnRlcm5hbF93czpfZXNsX2ludGVybmFsX3dz
 DELETE http://localhost:9200/user_activity_log
 
 ###
+GET http://localhost:9200/user_activity_log/_count
 
-
+###
+GET http://localhost:9200/user_activity_log/_count?q=id:ac207b0a-63c7-4281-a0ef-f37f048c2532
 

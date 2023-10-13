@@ -46,9 +46,9 @@ public class UserActivityLogService {
         return list;
     }
 
-    public void logUserActivity(UserActivityLogDTO dto) {
+    public UserActivityLogDocument logUserActivity(UserActivityLogDTO dto) {
         UserActivityLogDocument document = toUserActivityLogDocument(dto);
-        userActivityLogRepository.save(document);
+        return userActivityLogRepository.findFirstByEventId(dto.getEventId()).orElse(userActivityLogRepository.save(document));
     }
 
     public List<UserActivityLogDTO> list() {

@@ -29,6 +29,7 @@ public class KafkaConsumerConfig {
                 StringDeserializer.class);
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG,
                 JsonDeserializer.class);
+        props.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, 10);
         props.put(JsonDeserializer.TRUSTED_PACKAGES, "co.grtk.ual.dto");
         return props;
     }
@@ -43,6 +44,7 @@ public class KafkaConsumerConfig {
         ConcurrentKafkaListenerContainerFactory<String, Object> factory =
                 new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory());
+
         return factory;
     }
 }

@@ -1,6 +1,7 @@
 package co.grtk.ual.kafka;
 
 import co.grtk.ual.dto.UserActivityLogDTO;
+import co.grtk.ual.elastic.UserActivityLogDocument;
 import co.grtk.ual.elastic.UserActivityLogService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,8 +16,8 @@ public class KafkaMessageListener {
 
     @KafkaListener(topics = "ActivityLog", groupId = "ActivityLog-Group")
     public void consumeEvents(UserActivityLogDTO userActivityLogDTO) {
-        log.info("consumer consume the events {} ", userActivityLogDTO);
-        userActivityLogService.logUserActivity(userActivityLogDTO);
+        UserActivityLogDocument document = userActivityLogService.logUserActivity(userActivityLogDTO);
+        log.info("consumer consume the eventId:{}", document.getEventId());
     }
 
 }

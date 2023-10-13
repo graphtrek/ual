@@ -5,7 +5,6 @@ import co.grtk.ual.util.DateUtil;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 
 public class UserActivityLogMapper {
@@ -13,7 +12,6 @@ public class UserActivityLogMapper {
 
     public static UserActivityLogDocument toUserActivityLogDocument(UserActivityLogDTO entry) {
         UserActivityLogDocument userActivityLog = new UserActivityLogDocument();
-        userActivityLog.setId(UUID.randomUUID().toString());
         userActivityLog.setEventId(entry.getEventId());
         userActivityLog.setToken(entry.getToken());
         userActivityLog.setClientId(entry.getClientId());
@@ -33,7 +31,7 @@ public class UserActivityLogMapper {
 
     public static UserActivityLogDTO toUserActivityLogDTO(UserActivityLogDocument entity) {
         UserActivityLogDTO userActivityLogDTO = new UserActivityLogDTO();
-        userActivityLogDTO.setId(entity.getId());
+
         userActivityLogDTO.setActivityCode(entity.getActivityCode());
         userActivityLogDTO.setCategory(entity.getCategory());
         userActivityLogDTO.setLogLevel(entity.getLogLevel());

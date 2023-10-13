@@ -12,9 +12,8 @@ import java.util.Date;
 @Data
 @Document(indexName="user_activity_log", createIndex = true)
 public class UserActivityLogDocument {
-    @Id
-    private String id;
 
+    @Id
     @Field(type = FieldType.Keyword, name = "eventId")
     private String eventId;
 
