@@ -1,5 +1,7 @@
 package co.grtk.ual;
 
+import co.grtk.ual.config.KafkaConsumerConfig;
+import co.grtk.ual.config.LdapSecurityConfig;
 import co.grtk.ual.model.UalTemplate;
 import co.grtk.ual.repositroy.UalTemplateRepository;
 import lombok.RequiredArgsConstructor;
@@ -60,7 +62,7 @@ public class DataLoaderApplication implements CommandLineRunner {
                             .map(Cell::asString)
                             .orElse("");
 
-                    ualTemplate.setTemplateName(templateName);
+                    ualTemplate.setTemplate(templateName);
                     ualTemplate.setActivityCode(activityCode);
                     ualTemplate.setResultCode(resultCode);
                     ualTemplateRepository.save(ualTemplate);

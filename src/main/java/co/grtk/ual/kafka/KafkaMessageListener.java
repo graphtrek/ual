@@ -2,7 +2,7 @@ package co.grtk.ual.kafka;
 
 import co.grtk.ual.dto.UserActivityLogDTO;
 import co.grtk.ual.elastic.UserActivityLogDocument;
-import co.grtk.ual.elastic.UserActivityLogService;
+import co.grtk.ual.elastic.UserActivityLogDocumentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -12,12 +12,14 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 @Service
 public class KafkaMessageListener {
-    private final UserActivityLogService userActivityLogService;
+    private final UserActivityLogDocumentService userActivityLogService;
 
     @KafkaListener(topics = "ActivityLog", groupId = "ActivityLog-Group")
     public void consumeEvents(UserActivityLogDTO userActivityLogDTO) {
+        long start = System.currentTimeMillis();
         UserActivityLogDocument document = userActivityLogService.logUserActivity(userActivityLogDTO);
-        log.info("consumer consume the eventId:{}", document.getEventId());
+        long elapsed = System.currentTimeMillis() - start;
+        log.info("Kafka consumer elapsed:{} document:{}",elapsed, document);
     }
 
 }

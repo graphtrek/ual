@@ -18,12 +18,12 @@ public class UalTemplate {
     public Long id;
 
     @Column(length = 4096, nullable = false)
-    public String templateName;
+    public String template;
 
     @Column(length = 255, nullable = false)
     public String activityCode;
 
-    @Column(length = 32, nullable = false)
+    @Column(length = 64, nullable = false)
     public String resultCode;
 
 }

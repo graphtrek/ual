@@ -2,7 +2,7 @@ package co.grtk.ual.controller;
 
 import co.grtk.ual.dto.UserActivityLogDTO;
 import co.grtk.ual.dto.UserActivityLogRequestDTO;
-import co.grtk.ual.elastic.UserActivityLogService;
+import co.grtk.ual.elastic.UserActivityLogDocumentService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -16,7 +16,7 @@ import java.util.List;
 @Slf4j
 public class UALRestController {
 
-    private final UserActivityLogService userActivityLogService;
+    private final UserActivityLogDocumentService userActivityLogService;
     @GetMapping("/api/ping")
     public ResponseEntity<String> ping() {
         return new ResponseEntity<>("OK",HttpStatus.OK);

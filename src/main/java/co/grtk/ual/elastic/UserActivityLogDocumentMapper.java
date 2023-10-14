@@ -1,14 +1,22 @@
 package co.grtk.ual.elastic;
 
 import co.grtk.ual.dto.UserActivityLogDTO;
+import co.grtk.ual.model.TextParamHolder;
 import co.grtk.ual.util.DateUtil;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 
-public class UserActivityLogMapper {
-    private UserActivityLogMapper(){}
+public class UserActivityLogDocumentMapper {
+
+    private static final String FIELD_SEPARATOR = "]|[";
+    private static final String KEY_VALUE_SEPARATOR = ":=";
+    private static final String FIELD_SEPARATOR_SPLIT = "\\]\\|\\[";
+
+    private UserActivityLogDocumentMapper(){}
 
     public static UserActivityLogDocument toUserActivityLogDocument(UserActivityLogDTO entry) {
         UserActivityLogDocument userActivityLog = new UserActivityLogDocument();
@@ -44,8 +52,25 @@ public class UserActivityLogMapper {
         userActivityLogDTO.setClientId(entity.getClientId());
         userActivityLogDTO.setCorrelationId(entity.getCorrelationId());
         userActivityLogDTO.setResultCode(entity.getResultCode());
+        userActivityLogDTO.setText("-");
         userActivityLogDTO.setElapsed(entity.getElapsed());
         return userActivityLogDTO;
+    }
+
+    public static List<TextParamHolder> convertToTextParamHolders(String params) {
+        List<TextParamHolder> textParamHolders = new ArrayList<>();
+        if (params != null) {
+            for (String param : params.split(FIELD_SEPARATOR_SPLIT)) {
+                String[] keyValue = param.split(KEY_VALUE_SEPARATOR);
+                if (keyValue.length > 0) {
+                    TextParamHolder textParamHolder = new TextParamHolder();
+                    textParamHolder.setName(keyValue[0]);
+                    textParamHolder.setValue(keyValue.length == 2 ? keyValue[1] : "");
+                    textParamHolders.add(textParamHolder);
+                }
+            }
+        }
+        return textParamHolders;
     }
 
 }
