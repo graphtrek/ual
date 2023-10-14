@@ -11,19 +11,19 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @Entity
-public class Template {
+public class UalTemplate {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Long id;
+    public Long id;
 
     @Column(length = 4096, nullable = false)
-    String templateName;
+    public String templateName;
 
     @Column(length = 255, nullable = false)
-    String activityCode;
+    public String activityCode;
 
     @Column(length = 32, nullable = false)
-    String resultCode;
+    public String resultCode;
 
 }

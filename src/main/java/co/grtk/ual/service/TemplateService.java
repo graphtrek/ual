@@ -1,6 +1,6 @@
 package co.grtk.ual.service;
 
-import co.grtk.ual.repositroy.TemplateRepository;
+import co.grtk.ual.repositroy.UalTemplateRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -8,5 +8,5 @@ import org.springframework.stereotype.Service;
 @Service
 public class TemplateService {
 
-    private final TemplateRepository templateRepository;
+    private final UalTemplateRepository ualTemplateRepository;
 }
