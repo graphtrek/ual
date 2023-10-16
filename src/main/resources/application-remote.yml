@@ -1,0 +1,65 @@
+server:
+  compression:
+    enabled: true
+  # Default port
+  port: 8082
+  # Enable graceful shutdown - Server will wait for active request to finish
+  shutdown: graceful
+
+
+spring:
+  jpa:
+    open-in-view: false
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+  h2:
+    console:
+      enabled: true
+  datasource:
+    #url: jdbc:h2:mem:um
+    url: jdbc:h2:file:./data/h2/um1;AUTO_SERVER=TRUE
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
+  devtools:
+    add-properties: true
+  ldap:
+    embedded:
+      base-dn: dc=springframework,dc=org
+      ldif: classpath:test-server.ldif
+      port: 8389
+
+application:
+  authentication:
+    devTechUser:
+      passwordHash: '"{bcrypt}$2a$12$dqvc0Qk/D6Ru9n4UK7kaRe7tTbBZKNowXJLM32TJxPZkVAZgQflWK"'
+      username: _esl_internal_ws
+    ldap:
+      baseDN: dc=springframework,dc=org
+      enabled: true
+      url: ldap://localhost:8389
+      userDnPattern: uid={0},ou=people
+      userCacheExpiryMs: 60000
+
+  elasticUrl: 192.168.0.31:9200
+  kafkaBootstrapServer: 192.168.0.31:9092
+
+# Swagger
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+
+logging:
+  level:
+    org:
+      springframework:
+        data:
+          elasticsearch:
+            core: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        exclude: '*'
