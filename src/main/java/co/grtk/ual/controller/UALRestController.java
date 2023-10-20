@@ -3,6 +3,7 @@ package co.grtk.ual.controller;
 import co.grtk.ual.dto.UserActivityLogDTO;
 import co.grtk.ual.dto.UserActivityLogRequestDTO;
 import co.grtk.ual.elastic.UserActivityLogDocumentService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -14,6 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @RestController
 @Slf4j
+@SecurityRequirement(name = "ual")
 public class UALRestController {
 
     private final UserActivityLogDocumentService userActivityLogService;
