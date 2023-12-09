@@ -8,6 +8,9 @@ server:
 
 
 spring:
+  threads:
+    virtual:
+      enabled: true
   jpa:
     open-in-view: false
     show-sql: false
